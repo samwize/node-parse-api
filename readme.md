@@ -1,6 +1,26 @@
 Node Parse API
 ==============
 
+What's Changed in this Fork?
+----------------------------
+
+This is a fork of [Leveton's](https://github.com/Leveton/node-parse-api), which seems abandoned.
+
+This fork fixed for the open source Parse Server, because Parse mercilessly killed their service.
+
+You will now need to init app with options like this:
+
+```javascript
+var parse_app = new Parse({
+  app_id: PARSE_APP_ID,
+  master_key: PARSE_MASTER_KEY,
+  https: false,
+  host: "your.domain.com",
+  api_version: "/parse",
+  port: 1337
+});
+```
+
 install
 -------
 
@@ -517,7 +537,7 @@ app.sendPush(notification, function(err, resp){
 
 ### usage of a sessionToken for all operations
 
-If you use node-parse-api in a node.js server environement a client might send a sessionToken with a request to your server. 
+If you use node-parse-api in a node.js server environement a client might send a sessionToken with a request to your server.
 You can pass that sessionToken as a constructor option to perform database operations on behalf of that user session.
 
 This allows e.g. to find objects of classes that are restricted to be read by only that user (or role).
@@ -531,7 +551,7 @@ var sessionToken = '3h3gaa32bdd3h3gaa323h3gaa32bddbdd';
 var options = {
     app_id:'...',
     api_key:'...',
-    session_token: sessionToken // , master_key:'...' could be used too 
+    session_token: sessionToken // , master_key:'...' could be used too
 }
 
 var app = new Parse(options);
